@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --bg: #f6f5f2;
+  --surface: #ffffff;
+  --surface-soft: #f8f7f4;
+  --text: #111111;
+  --muted: #6b7280;
+  --line: rgba(17, 17, 17, 0.08);
+  --shadow: 0 24px 60px rgba(17, 17, 17, 0.08);
+  --accent-lime: #d9ff1f;
+  --accent-pink: #ff47c8;
+  --accent-blue: #2f53ff;
+  --font-body: var(--font-body), "Arial", sans-serif;
+  --font-display: var(--font-display), "Arial", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-body);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(217, 255, 31, 0.18), transparent 22%),
+    radial-gradient(circle at top right, rgba(255, 71, 200, 0.12), transparent 20%),
+    linear-gradient(180deg, #faf9f6 0%, #f6f5f2 45%, #f8f7f4 100%);
+  color: var(--text);
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(217, 255, 31, 0.8);
+  color: #111111;
+}
+
+.texture {
+  background-image:
+    linear-gradient(rgba(17, 17, 17, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 17, 17, 0.02) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
