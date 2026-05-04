@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import { ProductCard } from "@/components/product-card";
 import { SectionHeading } from "@/components/section-heading";
-import { categories, products } from "@/lib/catalog";
+import { getCategories, getProducts } from "@/lib/shop-data";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -10,7 +10,9 @@ export const metadata: Metadata = {
   description: "Browse the full Ecommerce Doll product catalog.",
 };
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  const [categories, products] = await Promise.all([getCategories(), getProducts()]);
+
   return (
     <main className="texture min-h-screen overflow-x-hidden">
       <SiteHeader />

@@ -1,20 +1,19 @@
 import type { Metadata } from "next";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import { SectionHeading } from "@/components/section-heading";
-import { calculateCartTotals } from "@/lib/mock-api";
+import { getCartTotals } from "@/lib/shop-data";
 import { CartView } from "@/components/cart/cart-view";
-import { products } from "@/lib/catalog";
 
 export const metadata: Metadata = {
   title: "Cart",
   description: "Review items in your shopping cart.",
 };
 
-export default function CartPage() {
-  const totals = calculateCartTotals();
+export default async function CartPage() {
+  const totals = await getCartTotals();
   const initialItems = totals.items.map((entry) => ({
-    product: products.find((product) => product.id === entry!.product.id)!,
-    quantity: entry!.quantity,
+    product: entry.product,
+    quantity: entry.quantity,
   }));
 
   return (

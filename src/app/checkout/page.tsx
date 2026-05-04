@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import { CheckoutForm } from "@/components/forms/checkout-form";
 import { SectionHeading } from "@/components/section-heading";
-import { calculateCartTotals } from "@/lib/mock-api";
+import { getCartTotals } from "@/lib/shop-data";
 import { formatMoney } from "@/lib/money";
 
 export const metadata: Metadata = {
@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   description: "Complete your order safely and quickly.",
 };
 
-export default function CheckoutPage() {
-  const totals = calculateCartTotals();
+export default async function CheckoutPage() {
+  const totals = await getCartTotals();
 
   return (
     <main className="texture min-h-screen overflow-x-hidden">

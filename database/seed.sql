@@ -15,3 +15,10 @@ INSERT INTO products (category_id, name, slug, description, price, old_price, ba
 (1, 'Off-Shoulder Top', 'off-shoulder-top', 'Easy statement top with a soft drape and modern shape.', 79.00, NULL, NULL, 1),
 (2, 'Linen Button Shirt', 'linen-button-shirt', 'Lightweight linen blend for warm days and crisp styling.', 69.00, NULL, NULL, 0),
 (3, 'Kids Pink Cap Set', 'kids-pink-cap-set', 'Playful cap and coordinated set for a bright casual look.', 49.00, NULL, NULL, 0);
+
+INSERT INTO cart_sessions (session_key, user_id) VALUES
+('demo-cart', NULL);
+
+INSERT INTO cart_items (cart_session_id, product_id, quantity) VALUES
+(1, 1, 1),
+(1, 5, 2);

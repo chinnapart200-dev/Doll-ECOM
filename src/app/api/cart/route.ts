@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import { calculateCartTotals } from "@/lib/mock-api";
+import { getCartTotals } from "@/lib/shop-data";
 
 export async function GET() {
-  const totals = calculateCartTotals();
+  const totals = await getCartTotals();
   return NextResponse.json({
     data: totals,
   });

@@ -5,7 +5,7 @@ import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import { ProductCard } from "@/components/product-card";
 import { SectionHeading } from "@/components/section-heading";
 import { formatMoney } from "@/lib/money";
-import { getProductBySlug, products } from "@/lib/catalog";
+import { getProductBySlug, getRelatedProducts } from "@/lib/shop-data";
 
 type Props = {
   params: Promise<{
@@ -15,7 +15,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = await getProductBySlug(slug);
 
   if (!product) {
     return {
@@ -31,13 +31,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductDetailPage({ params }: Props) {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = await getProductBySlug(slug);
 
   if (!product) {
     notFound();
   }
 
-  const related = products.filter((item) => item.category === product.category && item.slug !== product.slug).slice(0, 3);
+  const related = await getRelatedProducts(product.category, product.slug, 3);
 
   return (
     <main className="texture min-h-screen overflow-x-hidden">

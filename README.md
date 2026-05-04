@@ -28,6 +28,21 @@ Install dependencies:
 npm install
 ```
 
+Set up MySQL/XAMPP connection variables in `.env.local`:
+
+```bash
+MYSQL_HOST=127.0.0.1
+MYSQL_PORT=3306
+MYSQL_USER=root
+MYSQL_PASSWORD=
+MYSQL_DATABASE=ecommerce_doll
+```
+
+Import the schema and seed files into MySQL:
+
+- `database/schema.sql`
+- `database/seed.sql`
+
 Run the development server:
 
 ```bash
